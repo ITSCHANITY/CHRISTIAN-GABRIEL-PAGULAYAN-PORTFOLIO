@@ -40,7 +40,7 @@ function close(): void {
 
     <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <p class="font-mono text-xs text-muted">
-        // {{ filtered.length }} of {{ projectCount }} shown
+        {{ filtered.length }} of {{ projectCount }} shown
       </p>
       <label class="flex items-center gap-2 rounded-sm border border-white/10 bg-ink-800 px-3 py-2">
         <Search :size="15" class="text-muted" />

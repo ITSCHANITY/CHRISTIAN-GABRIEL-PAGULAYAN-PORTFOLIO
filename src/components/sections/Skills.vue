@@ -55,7 +55,7 @@ const activeSkillName = computed(() => skills.find((s) => s.id === ui.activeSkil
     <SectionHeading prompt="> ./skills --matrix" title="Skill Matrix" />
 
     <p class="mb-6 font-mono text-xs text-muted">
-      // click a skill to highlight the projects that used it
+      click a skill to highlight the projects that used it
     </p>
 
     <Transition name="fade">

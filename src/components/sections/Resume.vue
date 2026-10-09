@@ -82,7 +82,7 @@ function togglePreview(): void {
     </Transition>
 
     <p class="mt-3 font-mono text-xs text-muted">
-      // tip: you can also type <span class="text-brand">cv</span> in the terminal (press `)
+      tip: you can also type <span class="text-brand">cv</span> in the terminal (press `)
     </p>
   </section>
 </template>

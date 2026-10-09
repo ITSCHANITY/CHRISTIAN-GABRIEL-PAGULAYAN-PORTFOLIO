@@ -139,7 +139,7 @@ useIntersectionObserver(
       <div class="space-y-6">
         <TiltCard :max="10">
           <div v-editable="'src/data/profile.ts → handle / nickname'" class="card p-5">
-            <p class="font-mono text-xs text-muted">// whoami</p>
+            <p class="font-mono text-xs text-muted">whoami</p>
             <p class="mt-2 text-2xl font-bold text-white">
               {{ profile.handle }}
             </p>
@@ -165,7 +165,7 @@ useIntersectionObserver(
 
         <div v-editable="'src/data/profile.ts → currentlyLearning'" class="card p-5">
           <p class="mb-3 flex items-center gap-2 font-mono text-xs text-muted">
-            <span class="h-2 w-2 animate-pulse rounded-full bg-brand" /> // currently learning
+            <span class="h-2 w-2 animate-pulse rounded-full bg-brand" /> currently learning
           </p>
           <div class="flex flex-wrap gap-2">
             <span v-for="t in profile.currentlyLearning" :key="t" class="chip !text-[11px]">{{

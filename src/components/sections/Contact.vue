@@ -14,7 +14,7 @@ const copiedId = ref<string | null>(null)
 function copyValue(id: string, value: string): void {
   copy(value)
   copiedId.value = id
-  ui.toast('COPIED // in clipboard', 'success')
+  ui.toast('COPIED to clipboard', 'success')
   window.setTimeout(() => (copiedId.value = null), 1500)
 }
 
@@ -30,7 +30,7 @@ function iconFor(n: string): LucideIcon | null {
 
     <div class="mx-auto max-w-3xl">
       <div class="card p-8">
-        <p class="mb-6 font-mono text-sm text-muted">// direct</p>
+        <p class="mb-6 font-mono text-sm text-muted">direct</p>
         <ul v-editable="'src/data/socials.ts → socials'" class="space-y-4">
           <li
             v-for="s in socials"

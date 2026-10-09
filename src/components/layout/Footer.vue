@@ -62,7 +62,7 @@ onBeforeUnmount(() => window.clearInterval(timer))
         </button>
 
         <span class="font-mono text-[10px] text-muted/60" title="try the Konami code, or press ?">
-          // press ? for shortcuts
+          press ? for shortcuts
         </span>
         <button type="button" class="btn !px-3 !py-2" aria-label="back to top" @click="toTop">
           <ArrowUp :size="16" />

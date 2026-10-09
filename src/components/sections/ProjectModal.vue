@@ -58,7 +58,7 @@ const usedSkills = computed(() => {
 
         <div class="space-y-5 p-6">
           <div>
-            <p class="font-mono text-xs text-brand">// codename: {{ project.codename }}</p>
+            <p class="font-mono text-xs text-brand">codename: {{ project.codename }}</p>
             <h3 class="mt-1 text-2xl font-bold text-white">
               {{ project.title }}
             </h3>
@@ -69,13 +69,13 @@ const usedSkills = computed(() => {
 
           <div class="grid gap-4 sm:grid-cols-2">
             <div class="rounded-sm border border-white/10 bg-black/30 p-4">
-              <p class="mb-1 font-mono text-xs uppercase text-brand">// problem</p>
+              <p class="mb-1 font-mono text-xs uppercase text-brand">problem</p>
               <p class="text-sm text-gray-300">
                 {{ project.problem }}
               </p>
             </div>
             <div class="rounded-sm border border-white/10 bg-black/30 p-4">
-              <p class="mb-1 font-mono text-xs uppercase text-accent">// approach</p>
+              <p class="mb-1 font-mono text-xs uppercase text-accent">approach</p>
               <p class="text-sm text-gray-300">
                 {{ project.approach }}
               </p>
@@ -83,7 +83,7 @@ const usedSkills = computed(() => {
           </div>
 
           <div v-if="project.features.length">
-            <p class="mb-2 font-mono text-xs uppercase text-muted">// features</p>
+            <p class="mb-2 font-mono text-xs uppercase text-muted">features</p>
             <ul class="space-y-1.5">
               <li
                 v-for="(f, i) in project.features"
@@ -96,7 +96,7 @@ const usedSkills = computed(() => {
           </div>
 
           <div v-if="project.lessons.length">
-            <p class="mb-2 font-mono text-xs uppercase text-muted">// lessons learned</p>
+            <p class="mb-2 font-mono text-xs uppercase text-muted">lessons learned</p>
             <ul class="space-y-1.5">
               <li
                 v-for="(l, i) in project.lessons"
@@ -109,14 +109,14 @@ const usedSkills = computed(() => {
           </div>
 
           <div>
-            <p class="mb-2 font-mono text-xs uppercase text-muted">// stack</p>
+            <p class="mb-2 font-mono text-xs uppercase text-muted">stack</p>
             <div class="flex flex-wrap gap-1.5">
               <span v-for="t in project.tech" :key="t" class="chip">{{ t }}</span>
             </div>
           </div>
 
           <div v-if="usedSkills.length">
-            <p class="mb-2 font-mono text-xs uppercase text-muted">// skills used</p>
+            <p class="mb-2 font-mono text-xs uppercase text-muted">skills used</p>
             <div class="flex flex-wrap gap-1.5">
               <span v-for="s in usedSkills" :key="s.id" class="chip !text-[11px] text-brand">{{
                 s.name
