@@ -1,14 +1,25 @@
-import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import tailwindcss from '@tailwindcss/vite'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), tailwindcss()],
+  plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  build: {
+    target: 'es2020',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          gsap: ['gsap', 'gsap/ScrollTrigger'],
+          icons: ['lucide-vue-next'],
+          vendor: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
+        },
+      },
     },
   },
 })

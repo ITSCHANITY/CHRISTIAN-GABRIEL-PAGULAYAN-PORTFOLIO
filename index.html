@@ -1,35 +1,77 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
+    <!-- ✏️ EDIT HERE: favicon (glitch "I"/"CGP" svg in /public/favicon.svg) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ✏️ EDIT HERE (REQUIRED): SEO description (string, ~150 chars) -->
     <meta
       name="description"
-      content="Ian — Computer Engineering student at Cagayan State University. Cybersecurity, penetration testing, SOC / detection engineering, and embedded systems / IoT."
+      content="Christian Gabriel Pagulayan (ITSCHANITY) — Computer Engineering student at Cagayan State University. Cybersecurity, penetration testing, SOC / detection engineering, embedded systems & IoT."
     />
-    <meta name="theme-color" content="#05070a" />
+    <meta name="theme-color" content="#0a0a0c" />
+    <meta name="author" content="Christian Gabriel Pagulayan" />
 
-    <!-- Open Graph -->
+    <!-- ✏️ EDIT HERE (REQUIRED): Open Graph / social preview -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Ian — Security Engineer in Training" />
+    <meta property="og:title" content="ITSCHANITY // Christian Gabriel Pagulayan" />
     <meta
       property="og:description"
-      content="SOC / detection engineering + penetration testing. Embedded/IoT builder. CpE @ CSU."
+      content="SOC / detection engineering + penetration testing. Embedded/IoT builder. CpE @ CSU Carig."
+    />
+    <!-- ✏️ EDIT HERE (REQUIRED): absolute URL of your deployed site -->
+    <meta property="og:url" content="https://itschanity.example.com" />
+    <!-- ✏️ EDIT HERE (REQUIRED): absolute URL to a 1200x630 preview image -->
+    <meta property="og:image" content="https://itschanity.example.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ITSCHANITY // Christian Gabriel Pagulayan" />
+    <meta
+      name="twitter:description"
+      content="SOC / detection engineering + penetration testing. Embedded/IoT builder."
     />
 
-    <!-- Fonts -->
+    <!-- Fonts: JetBrains Mono (code) + Inter (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <title>Ian // Security Engineer</title>
+    <!-- ✏️ EDIT HERE (REQUIRED): JSON-LD Person schema (name, url, sameAs links) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Christian Gabriel Pagulayan",
+        "alternateName": "ITSCHANITY",
+        "url": "https://itschanity.example.com",
+        "jobTitle": "Computer Engineering Student / Security Engineer in Training",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Cagayan State University - Carig Campus"
+        },
+        "knowsAbout": [
+          "Cybersecurity",
+          "Penetration Testing",
+          "SOC / Detection Engineering",
+          "Embedded Systems",
+          "IoT"
+        ],
+        "sameAs": [
+          "https://github.com/ITSCHANITY",
+          "https://www.linkedin.com/in/christian-gabriel"
+        ]
+      }
+    </script>
+
+    <title>ITSCHANITY // Christian Gabriel Pagulayan</title>
   </head>
   <body>
     <div id="app"></div>
+    <noscript>This portfolio requires JavaScript. Please enable it to continue.</noscript>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -1,159 +1,281 @@
-import type { Project } from './types'
+import type { Project, ProjectFilter } from '@/types'
 
-// -------------------------------------------------------------------------
-//  Projects
-//  To add a project: append an object here with a unique `id` and a `track`
-//  of 'security' | 'embedded' | 'web'. The UI updates automatically.
-// -------------------------------------------------------------------------
+export const projectFilters: ProjectFilter[] = [
+  { id: 'all', label: 'All' },
+  { id: 'cybersecurity', label: 'Cybersecurity' },
+  { id: 'webapps', label: 'Web Apps' },
+  { id: 'gamedev', label: 'Game Dev' },
+  { id: 'iot', label: 'IoT / Embedded' },
+]
+
 export const projects: Project[] = [
-  // ===================== TRACK 1 — CYBERSECURITY =========================
   {
-    id: 'wiretap',
-    track: 'security',
-    name: 'WIRETAP',
-    tagline: 'Multi-protocol honeypot suite with a live Flask dashboard',
-    status: 'active',
-    period: '2025',
-    featured: true,
-    stack: ['Python', 'Flask', 'SQLite', 'WebSockets', 'Docker'],
-    summary:
-      'A deception platform that stands up decoy services across multiple protocols, captures attacker interactions, and streams them to a real-time dashboard for triage.',
-    highlights: [
-      'Emulates multiple protocol services (SSH, HTTP, FTP-style) as low-interaction honeypots to lure and log attacker activity.',
-      'Central Flask dashboard aggregates events in real time — source IPs, credentials tried, payloads, and session timelines.',
-      'Structured event logging designed for downstream detection engineering and threat-intel enrichment.',
-      'Containerized for safe, disposable deployment so decoys can be spun up and torn down quickly.',
+    id: 'webscan',
+    title: 'WebScan v4.0',
+    codename: 'NIGHTCRAWLER',
+    category: 'cybersecurity',
+    status: 'completed',
+    summary: 'Custom Python web vulnerability scanner.',
+    description:
+      'A custom-built web vulnerability scanner written in Python that crawls targets and flags common misconfigurations and vulnerabilities.',
+    problem:
+      'Off-the-shelf scanners were noisy and missed logic/config flaws like broken access control during CTF-assigned target tests.',
+    approach:
+      'Built a focused async crawler in Python that enumerates endpoints, probes auth boundaries, and checks data-access rules.',
+    features: [
+      'Async endpoint crawling',
+      'Access-control / RLS checks',
+      'JSON report output',
     ],
-    links: [{ label: 'Case study', href: '#', icon: 'external' }],
+    lessons: [
+      'Found a REAL Supabase RLS (Row Level Security) misconfiguration on a CTF-assigned target.',
+      'Config flaws often matter more than classic injection bugs.',
+    ],
+    tech: ['Python', 'Requests', 'asyncio', 'Supabase'],
+    skillIds: ['pentest', 'vulnscan', 'python', 'kali'],
+    terminalPreview: [
+      '$ webscan --target ctf.box',
+      '[*] crawling endpoints...',
+      '[!] RLS misconfig: public read on private table',
+      '[+] report saved: webscan_report.json',
+    ],
+
+    links: [{ label: 'GitHub', href: '#' }],
+    featured: true,
   },
   {
     id: 'threatscan',
-    track: 'security',
-    name: 'ThreatScan',
-    tagline: 'Malware & threat analyzer — YARA, entropy, MITRE ATT&CK, threat intel',
-    status: 'active',
-    period: '2025',
-    featured: true,
-    stack: ['Python', 'YARA', 'VirusTotal API', 'MalwareBazaar', 'MITRE ATT&CK'],
-    summary:
-      'A static malware triage tool that fingerprints suspicious files, runs YARA detections, computes entropy, and enriches findings against threat-intel sources — mapping results to ATT&CK.',
-    highlights: [
-      'Runs YARA rule matching and byte-entropy analysis to flag packing/obfuscation and known malicious patterns.',
-      'Enriches indicators via VirusTotal and MalwareBazaar lookups for reputation and family attribution.',
-      'Maps observed behaviors and detections to MITRE ATT&CK techniques for analyst-ready context.',
-      'Produces a consolidated triage report to speed up "is this malicious?" decisions.',
+    title: 'ThreatScan v4.0',
+    codename: 'DEEPSCAN',
+    category: 'cybersecurity',
+    status: 'completed',
+    summary: 'Malware / threat analyzer with ATT&CK mapping.',
+    description:
+      'A malware and threat analyzer that applies YARA rules, performs entropy analysis, maps behaviors to MITRE ATT&CK, and enriches findings with MalwareBazaar and VirusTotal.',
+    problem:
+      'Triaging unknown binaries by hand is slow and inconsistent without a repeatable enrichment pipeline.',
+    approach:
+      'Combined static signals (YARA, entropy) with threat-intel lookups and ATT&CK technique mapping into one report.',
+    features: [
+      'YARA rule matching',
+      'Entropy analysis (packing detection)',
+      'MITRE ATT&CK technique mapping',
+      'VirusTotal + MalwareBazaar enrichment',
     ],
-    links: [{ label: 'Repo', href: '#', icon: 'github' }],
+    lessons: [
+      'Layering static + intel signals beats any single indicator.',
+      'ATT&CK mapping makes findings communicable to a SOC.',
+    ],
+    tech: ['Python', 'YARA', 'MITRE ATT&CK', 'VirusTotal', 'MalwareBazaar'],
+    skillIds: ['malware', 'osint', 'python', 'kali'],
+    terminalPreview: [
+      '$ threatscan sample.bin',
+      '[*] entropy: 7.91 (packed)',
+      '[*] YARA: Win32.Generic.Loader',
+      '[*] ATT&CK: T1055 Process Injection',
+    ],
+    links: [{ label: 'GitHub', href: '#' }],
+    featured: true,
   },
   {
-    id: 'webscan',
-    track: 'security',
-    name: 'WebScan',
-    tagline: 'Python web vulnerability scanner',
-    status: 'active',
-    period: '2024–25',
-    stack: ['Python', 'requests', 'BeautifulSoup', 'asyncio'],
-    summary:
-      'An automated web application vulnerability scanner that crawls a target and probes for common web weaknesses, producing a prioritized findings report.',
-    highlights: [
-      'Crawls target applications and tests for common OWASP-style issues (injection points, misconfigurations, exposed endpoints).',
-      'Modular check design so new vulnerability signatures can be added independently.',
-      'Generates a readable report with severity and evidence for each finding.',
+    id: 'wiretap',
+    title: 'WIRETAP',
+    codename: 'FLYTRAP',
+    category: 'cybersecurity',
+    status: 'in-progress',
+    summary: 'Multi-protocol honeypot with live dashboard.',
+    description:
+      'A multi-protocol honeypot exposing SSH, HTTP, FTP, and Telnet listeners, logging attacker interactions to SQLite and visualizing them in a Flask dashboard.',
+    problem:
+      'Wanted real, local telemetry on how attackers probe exposed services — not just textbook theory.',
+    approach:
+      'Stood up fake SSH/HTTP/FTP/Telnet listeners, logged every interaction to SQLite, and built a Flask dashboard with Chart.js graphs and a Leaflet attacker-geo map.',
+    features: [
+      'SSH / HTTP / FTP / Telnet listeners',
+      'SQLite interaction logging',
+      'Flask dashboard (Chart.js + Leaflet)',
     ],
-    links: [{ label: 'Repo', href: '#', icon: 'github' }],
+    lessons: [
+      'Credential-stuffing noise is constant and automated.',
+      'Good logging schema design pays off downstream.',
+    ],
+    tech: ['Python', 'Flask', 'SQLite', 'Chart.js', 'Leaflet'],
+    skillIds: ['pentest', 'sys-sec', 'python', 'sql', 'flask', 'kali'],
+    terminalPreview: [
+      '$ wiretap --listen all',
+      '[+] SSH/HTTP/FTP/Telnet armed',
+      '[!] 203.0.113.7 tried root:toor',
+      '[*] logged -> events.sqlite',
+    ],
+    links: [{ label: 'GitHub', href: '#' }],
+    featured: true,
   },
   {
     id: 'storage-checker',
-    track: 'security',
-    name: 'Storage Checker',
-    tagline: 'Disk hygiene & dependency checker',
-    status: 'active',
-    period: '2024',
-    stack: ['Python', 'CLI'],
-    summary:
-      'A utility that audits disk usage and project dependencies to keep dev environments clean, lean, and free of stale or vulnerable packages.',
-    highlights: [
-      'Scans for large/redundant files and reports disk-hygiene issues.',
-      'Inspects project dependencies to surface bloat and outdated packages.',
-      'Lightweight CLI workflow for quick, repeatable environment audits.',
+    title: 'Storage Checker v5.0',
+    codename: 'JANITOR',
+    category: 'cybersecurity',
+    status: 'completed',
+    summary: 'Disk hygiene & missing-dependency checker.',
+    description:
+      'A system utility that audits disk hygiene and detects missing dependencies, keeping lab machines clean and reproducible.',
+    problem:
+      'Lab machines drifted over time — stale files piled up and missing deps broke tools silently.',
+    approach:
+      'Wrote a Python/shell auditor that reports reclaimable space and flags missing dependencies before they bite.',
+    features: ['Reclaimable-space report', 'Missing dependency detection', 'Cleanup plan output'],
+    lessons: ['Automating hygiene prevents "works on my machine" surprises.'],
+    tech: ['Python', 'Shell'],
+    skillIds: ['linux-admin', 'sys-sec', 'python', 'kali'],
+    terminalPreview: [
+      '$ storage-checker --scan /',
+      '[*] 12.4 GB reclaimable',
+      '[!] missing dep: libpcap-dev',
+      '[+] cleanup plan ready',
     ],
+    links: [{ label: 'GitHub', href: '#' }],
   },
   {
     id: 'passgen-passman',
-    track: 'security',
-    name: 'passgen / passman',
-    tagline: 'Password generator & manager pair',
-    status: 'active',
-    period: '2024',
-    stack: ['Python', 'cryptography', 'CLI'],
-    summary:
-      'A companion pair of tools: a configurable strong-password generator and a local password manager focused on secure storage practices.',
-    highlights: [
-      'passgen produces high-entropy passwords with configurable character policies.',
-      'passman stores credentials locally with encryption-first handling.',
-      'Built to explore secure secret-handling patterns hands-on.',
+    title: 'passgen v2 / passman v2',
+    codename: 'KEYRING',
+    category: 'cybersecurity',
+    status: 'completed',
+    summary: 'Password generator and manager.',
+    description:
+      'A pair of tools: passgen generates strong, configurable passwords; passman securely stores and retrieves them.',
+    problem: 'Needed strong, unique credentials per service without reusing passwords.',
+    approach:
+      'Built a configurable generator plus an encrypted local store with simple add/get commands.',
+    features: ['Configurable password generation', 'Encrypted local storage', 'CLI workflow'],
+    lessons: ['Rolling your own crypto storage teaches real respect for key management.'],
+    tech: ['Python', 'cryptography'],
+    skillIds: ['python'],
+    terminalPreview: [
+      '$ passgen -l 24 --symbols',
+      '[+] generated: ********************',
+      '$ passman add github',
+      '[+] stored (encrypted)',
     ],
+    links: [{ label: 'GitHub', href: '#' }],
   },
-
-  // ===================== TRACK 2 — EMBEDDED / IOT ========================
   {
     id: 'sentriq',
-    track: 'embedded',
-    name: 'Sentriq',
-    tagline: 'IoT smart campus equipment locker — thesis project',
+    title: 'Sentriq',
+    codename: 'VAULTKEEPER',
+    category: 'iot',
     status: 'thesis',
-    period: '2025',
+    summary: 'IoT smart campus equipment locker (thesis).',
+    description:
+      'Thesis project — an IoT smart equipment locker for CSU, evolved from the Boxceiver concept. Built on ESP32-WROOM with multi-factor access and tamper detection reporting to an MQTT dashboard.',
+    problem:
+      'Shared campus equipment needed accountable, auditable, and tamper-aware access control.',
+    approach:
+      'Evolved from Boxceiver: added GM65 QR + AS608 fingerprint multi-factor auth, ADXL345 tamper detection, reed switches, and solenoid locks, all reporting over MQTT.',
+    features: [
+      'ESP32-WROOM controller',
+      'GM65 QR + AS608 fingerprint multi-factor',
+      'ADXL345 tamper detection + reed switches',
+      'Solenoid locks + MQTT dashboard',
+    ],
+    lessons: [
+      'Multi-factor hardware auth is a systems-integration challenge, not just code.',
+      'Tamper detection needs careful thresholding to avoid false alarms.',
+    ],
+    tech: ['ESP32-WROOM', 'GM65 QR', 'AS608', 'ADXL345', 'MQTT', 'Solenoid'],
+    skillIds: ['esp32', 'mqtt', 'sensors'],
+    terminalPreview: [
+      '$ sentriq status',
+      '[*] locker#3: LOCKED',
+      '[*] fingerprint: VERIFIED',
+      '[!] ADXL345: tamper = none',
+    ],
+    links: [{ label: 'Details', href: '#' }],
     featured: true,
-    stack: [
-      'ESP32',
-      'Fingerprint sensor',
-      'Barcode scanner',
-      'MQTT',
-      'Tamper detection',
-    ],
-    summary:
-      'A secure smart locker system for managing shared campus equipment — combining biometric + barcode authentication, tamper detection, and a live MQTT dashboard. My Computer Engineering thesis project.',
-    highlights: [
-      'Dual-factor access: fingerprint authentication plus barcode scanning to check equipment in and out.',
-      'Tamper-detection sensors raise alerts on unauthorized access attempts.',
-      'ESP32 nodes publish events over MQTT to a central dashboard for real-time monitoring and audit logging.',
-      'Designed for campus deployment — accountability and traceability for shared lab/equipment inventory.',
-      'Evolution of the earlier Boxceiver platform, hardened for a multi-user institutional setting.',
-    ],
-    links: [{ label: 'Case study', href: '#', icon: 'external' }],
   },
   {
     id: 'boxceiver',
-    track: 'embedded',
-    name: 'Boxceiver',
-    tagline: 'IoT smart parcel vault — Sentriq predecessor',
-    status: 'archived',
-    period: '2024',
-    stack: ['ESP32-CAM', 'RFID', 'Solar + Li-ion hybrid power', 'IoT'],
-    summary:
-      'A self-powered smart parcel vault that authenticates deliveries via RFID, captures photo evidence with an ESP32-CAM, and runs on a solar/lithium hybrid power system for off-grid operation.',
-    highlights: [
-      'RFID-based authentication to authorize parcel drop-off and retrieval.',
-      'ESP32-CAM captures photo evidence of each delivery event.',
-      'Solar + lithium hybrid power design for standalone, off-grid deployment.',
-      'Served as the R&D foundation that led to the Sentriq thesis project.',
+    title: 'Boxceiver',
+    codename: 'DROPBOX-X',
+    category: 'iot',
+    status: 'in-progress',
+    summary: 'IoT smart parcel vault with hybrid power.',
+    description:
+      'An IoT smart parcel vault using an ESP32-CAM, EMQX/MQTT messaging, and RC522 RFID access control, powered by a hybrid solar / Li-ion system. The predecessor concept to Sentriq.',
+    problem: 'Unattended parcel delivery needed secure, powered, off-grid-capable storage.',
+    approach:
+      'Combined an ESP32-CAM for capture, RC522 RFID for access, EMQX/MQTT for messaging, and a hybrid solar/Li-ion supply.',
+    features: [
+      'ESP32-CAM capture',
+      'RC522 RFID access control',
+      'EMQX / MQTT messaging',
+      'Hybrid solar / Li-ion power',
     ],
+    lessons: ['Power budgeting is as important as the firmware for off-grid IoT.'],
+    tech: ['ESP32-CAM', 'EMQX', 'MQTT', 'RC522 RFID', 'Solar/Li-ion'],
+    skillIds: ['esp32', 'mqtt', 'sensors'],
+    terminalPreview: [
+      '$ boxceiver watch',
+      '[*] RFID tap: AUTHORIZED',
+      '[*] cam: snapshot captured',
+      '[*] battery: 87% (solar)',
+    ],
+    links: [{ label: 'Details', href: '#' }],
+  },
+  {
+    id: 'arsenal',
+    title: 'ARSENAL',
+    codename: 'BLACKVAULT',
+    category: 'webapps',
+    status: 'planned',
+    summary: 'Local-hosted project vault with terminal UI.',
+    description:
+      'A planned local-hosted project vault with a dark terminal UI to catalog, search, and launch personal tooling and projects.',
+    problem: 'Personal tools are scattered — there is no single launchpad to find and run them.',
+    approach:
+      'Plan a local web app (Vue + DRF) with a terminal-style UI to index, search, and launch projects.',
+    features: ['Project catalog + search', 'Terminal-style UI', 'Quick-launch actions'],
+    lessons: ['(planned)'],
+    tech: ['Vue 3', 'Django REST', 'TypeScript'],
+    skillIds: ['vue', 'typescript', 'javascript', 'drf'],
+    terminalPreview: ['$ arsenal ls', '[*] indexing local projects...', '[planned] feature set WIP'],
+    links: [{ label: 'Soon', href: '#' }],
   },
 
-  // ===================== TRACK 3 — WEB APPS ==============================
-  // Placeholder entries — replace/extend as web projects ship.
   {
-    id: 'web-placeholder',
-    track: 'web',
-    name: 'Next build incoming',
-    tagline: 'Space reserved for full-stack web app projects',
+    id: 'webapp-placeholder',
+    title: 'Web App — Coming Soon',
+    codename: 'UNNAMED-WEB',
+    category: 'webapps',
     status: 'planned',
-    stack: ['Django REST Framework', 'Vue 3', 'TypeScript'],
-    summary:
-      'This track is where full-stack web application projects will live — built on Django REST Framework back ends with Vue/React front ends. New entries drop in here as they ship.',
-    highlights: [
-      'Planned focus: security-conscious web apps with clean APIs and typed front ends.',
-      'Add a project by appending an entry to src/data/projects.ts with track: "web".',
-    ],
+    summary: 'Placeholder for a future web application.',
+    description: 'Replace this with a real web app project.',
+    problem: 'Describe the problem your web app solves.',
+    approach: 'Describe the stack and approach.',
+    features: ['feature one', 'feature two'],
+    lessons: ['what you learned'],
+    tech: ['Vue', 'TypeScript', 'Tailwind'],
+    skillIds: ['vue', 'typescript', 'react', 'tailwind'],
+    terminalPreview: ['$ echo "coming soon"', 'coming soon'],
+    links: [{ label: 'Soon', href: '#' }],
+  },
+  {
+    id: 'gamedev-placeholder',
+    title: 'Game — Coming Soon',
+    codename: 'UNNAMED-GAME',
+    category: 'gamedev',
+    status: 'planned',
+    summary: 'Placeholder for a future game dev project.',
+    description: 'Replace this with a real game: engine, genre, mechanics, and a link to play.',
+    problem: 'Describe the design pillar / problem.',
+    approach: 'Describe the engine and mechanics.',
+    features: ['core loop', 'mechanic two'],
+    lessons: ['what you learned'],
+    tech: ['Godot', 'GDScript'],
+    skillIds: [],
+    terminalPreview: ['$ game --new', '[planned] loading assets...'],
+    links: [{ label: 'Soon', href: '#' }],
   },
 ]
+
+export const projectCount = projects.length
