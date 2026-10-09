@@ -1,17 +1,10 @@
 import type { Config } from 'tailwindcss'
 
-/*
- * ✏️ EDIT HERE: Tailwind theme (colors, fonts, animations)
- * Colors here are the design-token defaults. The LIVE runtime theme
- * (crimson / matrix / cyan) is driven by CSS variables set in
- * src/data/theme.ts — change palettes there for the theme switcher.
- */
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        // ✏️ EDIT HERE: base surface colors (hex strings)
         ink: {
           900: '#0a0a0c', // near-black background
           800: '#101014',
@@ -25,7 +18,6 @@ export default {
         muted: '#8b8b96',
       },
       fontFamily: {
-        // ✏️ EDIT HERE: font stacks (first value should match index.html <link>)
         mono: ['"JetBrains Mono"', '"Fira Code"', 'ui-monospace', 'monospace'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },

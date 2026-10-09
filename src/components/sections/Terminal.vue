@@ -41,7 +41,6 @@ function onDown(e: KeyboardEvent): void {
 onKeyStroke('`', (e) => {
   const el = e.target as HTMLElement
   if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-
     if (!term.open) return
   }
   e.preventDefault()
@@ -63,9 +62,7 @@ watch(
 )
 watch(() => term.lines.length, scrollToBottom)
 
-onMounted(() => {
-
-})
+onMounted(() => {})
 </script>
 
 <template>
@@ -76,7 +73,6 @@ onMounted(() => {
       role="dialog"
       aria-label="interactive terminal"
     >
-      
       <div class="flex items-center justify-between border-b border-white/10 px-4 py-2">
         <div class="flex items-center gap-2">
           <span class="h-3 w-3 rounded-full bg-red-500/80" />
@@ -94,7 +90,6 @@ onMounted(() => {
         </button>
       </div>
 
-      
       <div
         ref="bodyRef"
         class="h-[calc(55vh-5.6rem)] overflow-y-auto px-4 py-3"
@@ -110,7 +105,6 @@ onMounted(() => {
         </p>
       </div>
 
-      
       <form
         class="flex items-center gap-2 border-t border-white/10 px-4 py-2"
         @submit.prevent="submit"
@@ -128,7 +122,7 @@ onMounted(() => {
           @keydown.tab="onTab"
           @keydown.up="onUp"
           @keydown.down="onDown"
-        >
+        />
       </form>
     </section>
   </Transition>

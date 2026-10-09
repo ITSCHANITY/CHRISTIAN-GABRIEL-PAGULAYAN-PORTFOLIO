@@ -3,24 +3,22 @@ import { ref, onBeforeUnmount, type Ref } from 'vue'
 export const DEFAULT_SCRAMBLE_CHARS = '!<>-_\\/[]{}—=+*^?#01010100ABCDEF%$&@'
 
 export interface GlitchOptions {
-  
   scrambleChars?: string
-  
+
   duration?: number
-  
+
   tick?: number
 }
 
 interface GlitchReturn {
-  
   output: Ref<string>
-  
+
   running: Ref<boolean>
-  
+
   decodeTo: (target: string) => Promise<void>
-  
+
   setInstant: (text: string) => void
-  
+
   stop: () => void
 }
 

@@ -4,8 +4,8 @@ import TiltCard from '@/components/ui/TiltCard.vue'
 import type { Project, ProjectStatus } from '@/types'
 import { useUiStore } from '@/stores/ui'
 
-const props = defineProps<{ project: Project }>()
-const emit = defineEmits<{ open: [project: Project] }>()
+const props = defineProps<{ project: Project; dimmed?: boolean }>()
+const emit = defineEmits<{ open: [project: Project]; hover: [id: string | null] }>()
 
 const ui = useUiStore()
 const hovered = ref(false)
@@ -21,25 +21,31 @@ const statusMeta: Record<ProjectStatus, { label: string; cls: string }> = {
 </script>
 
 <template>
-  <TiltCard :max="7">
+  <TiltCard
+    :max="7"
+    class="transition-[filter,opacity] duration-300 ease-out"
+    :class="[dimmed ? 'opacity-50 blur-sm' : 'opacity-100 blur-0', hovered ? 'z-20' : 'z-0']"
+  >
     <article
-      class="card group flex h-full cursor-pointer flex-col overflow-hidden p-5 transition-colors"
-      :class="highlighted ? 'border-brand ring-1 ring-brand/50' : 'hover:border-brand/50'"
+      class="card group flex h-full cursor-pointer flex-col overflow-hidden p-5 transition-all duration-300 ease-out"
+      :class="[
+        highlighted ? 'border-brand ring-1 ring-brand/50' : 'hover:border-brand/50',
+        hovered && !ui.reducedMotion ? 'scale-[1.05]' : 'scale-100',
+      ]"
       role="button"
       :aria-label="`open ${project.title}`"
       tabindex="0"
-      @mouseenter="hovered = true"
-      @mouseleave="hovered = false"
+      @mouseenter="(hovered = true), emit('hover', project.id)"
+      @mouseleave="(hovered = false), emit('hover', null)"
+      @focus="emit('hover', project.id)"
+      @blur="emit('hover', null)"
       @click="emit('open', project)"
       @keydown.enter="emit('open', project)"
     >
       <header class="mb-3 flex items-start justify-between gap-3">
         <h3 class="glitch-rgb font-mono text-base font-semibold text-white">
           <span v-if="!hovered">{{ project.title }}</span>
-          <span
-            v-else
-            class="text-brand"
-          >{{ project.codename }}</span>
+          <span v-else class="text-brand">{{ project.codename }}</span>
         </h3>
         <span
           class="shrink-0 rounded-sm border px-1.5 py-0.5 font-mono text-[10px] tracking-wide"
@@ -53,30 +59,22 @@ const statusMeta: Record<ProjectStatus, { label: string; cls: string }> = {
         {{ project.summary }}
       </p>
 
-      
       <div
         class="mb-4 min-h-[5.5rem] rounded-sm border border-white/10 bg-black/50 p-3 font-mono text-[11px] leading-relaxed text-green-400 transition-opacity"
         :class="hovered ? 'opacity-100' : 'opacity-50'"
       >
-        <p
-          v-for="(l, i) in project.terminalPreview"
-          :key="i"
-          class="whitespace-pre-wrap"
-        >
+        <p v-for="(l, i) in project.terminalPreview" :key="i" class="whitespace-pre-wrap">
           {{ l }}
         </p>
       </div>
 
       <footer class="mt-auto flex flex-wrap gap-1.5">
-        <span
-          v-for="t in project.tech.slice(0, 4)"
-          :key="t"
-          class="chip !text-[10px]"
-        >{{ t }}</span>
-        <span
-          v-if="project.tech.length > 4"
-          class="chip !text-[10px]"
-        >+{{ project.tech.length - 4 }}</span>
+        <span v-for="t in project.tech.slice(0, 4)" :key="t" class="chip !text-[10px]">{{
+          t
+        }}</span>
+        <span v-if="project.tech.length > 4" class="chip !text-[10px]"
+          >+{{ project.tech.length - 4 }}</span
+        >
       </footer>
     </article>
   </TiltCard>

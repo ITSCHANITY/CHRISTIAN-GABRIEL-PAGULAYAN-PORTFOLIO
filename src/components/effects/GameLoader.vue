@@ -71,7 +71,6 @@ onMounted(() => {
   visible.value = true
 
   if (ui.reducedMotion) {
-
     progress.value = 100
     assetIndex.value = loader.assets.length - 1
     ready.value = true
@@ -94,23 +93,18 @@ onBeforeUnmount(cleanup)
       :aria-busy="!ready"
       @click="onInput"
     >
-      
-      <div
-        class="loader-scan pointer-events-none absolute inset-0 opacity-30"
-        aria-hidden="true"
-      />
+      <div class="loader-scan pointer-events-none absolute inset-0 opacity-30" aria-hidden="true" />
 
       <div class="relative w-full max-w-md text-center">
-        
-        
-        <h1 class="glitch-rgb glitch-active font-mono text-4xl font-extrabold tracking-widest text-brand sm:text-5xl">
+        <h1
+          class="glitch-rgb glitch-active font-mono text-4xl font-extrabold tracking-widest text-brand sm:text-5xl"
+        >
           {{ loader.title }}
         </h1>
         <p class="mt-2 font-mono text-xs uppercase tracking-[0.4em] text-muted">
           {{ loader.subtitle }}
         </p>
 
-        
         <div class="mt-10">
           <div
             class="flex items-center justify-center gap-[3px] font-mono text-brand"
@@ -126,16 +120,12 @@ onBeforeUnmount(cleanup)
           <div class="mt-3 flex items-center justify-between font-mono text-xs text-muted">
             <span class="truncate text-left text-accent">
               <span v-if="!ready">&gt; {{ currentAsset }}<span class="animate-pulse">_</span></span>
-              <span
-                v-else
-                class="text-brand"
-              >&gt; ready.</span>
+              <span v-else class="text-brand">&gt; ready.</span>
             </span>
             <span class="shrink-0 tabular-nums text-white">{{ progress }}%</span>
           </div>
         </div>
 
-        
         <div class="mt-10 h-6">
           <p
             v-if="ready"
@@ -143,12 +133,7 @@ onBeforeUnmount(cleanup)
           >
             ▶ {{ loader.startPrompt }}
           </p>
-          <p
-            v-else
-            class="font-mono text-[10px] text-muted/60"
-          >
-            initializing...
-          </p>
+          <p v-else class="font-mono text-[10px] text-muted/60">initializing...</p>
         </div>
       </div>
     </div>

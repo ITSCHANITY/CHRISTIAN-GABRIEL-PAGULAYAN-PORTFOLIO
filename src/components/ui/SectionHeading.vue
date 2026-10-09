@@ -5,9 +5,8 @@ import { useGlitch } from '@/composables/useGlitch'
 import { useUiStore } from '@/stores/ui'
 
 const props = defineProps<{
-  
   prompt: string
-  
+
   title: string
 }>()
 
@@ -43,10 +42,7 @@ function onHover(): void {
 </script>
 
 <template>
-  <div
-    ref="root"
-    class="mb-12"
-  >
+  <div ref="root" class="mb-12">
     <h2
       class="glitch-rgb font-mono text-sm text-brand"
       :class="{ 'glitch-active': running }"

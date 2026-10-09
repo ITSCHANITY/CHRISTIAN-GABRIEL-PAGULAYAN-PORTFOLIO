@@ -9,7 +9,6 @@ export const skillTabs: SkillTab[] = [
 ]
 
 export const skills: Skill[] = [
-
   {
     id: 'pentest',
     name: 'Penetration Testing',
@@ -93,14 +92,14 @@ export const skills: Skill[] = [
     projectIds: ['webscan', 'threatscan', 'wiretap', 'storage-checker', 'passgen-passman'],
   },
   {
-    id: 'javascript',
-    name: 'JavaScript',
-    alias: 'async.js',
+    id: 'java',
+    name: 'Java',
+    alias: 'Main.java',
     category: 'programming',
     level: 'Working',
     percent: 75,
-    usedIn: 'Front-end interactivity and dashboards.',
-    projectIds: ['arsenal'],
+    usedIn: 'Object-oriented programming and coursework projects.',
+    projectIds: [],
   },
   {
     id: 'typescript',
@@ -110,7 +109,7 @@ export const skills: Skill[] = [
     level: 'Working',
     percent: 78,
     usedIn: 'Typed front-ends and this very portfolio.',
-    projectIds: ['arsenal', 'webapp-placeholder'],
+    projectIds: ['arsenal', 'vape-inventory', 'cafe-menu-order', 'ancient-architecture-cards'],
   },
   {
     id: 'sql',
@@ -172,7 +171,7 @@ export const skills: Skill[] = [
     level: 'Working',
     percent: 75,
     usedIn: 'Front-ends with TypeScript for web app projects.',
-    projectIds: ['webapp-placeholder'],
+    projectIds: ['vape-inventory', 'cafe-menu-order'],
   },
   {
     id: 'vue',
@@ -182,7 +181,7 @@ export const skills: Skill[] = [
     level: 'Working',
     percent: 85,
     usedIn: 'This portfolio + planned ARSENAL vault UI.',
-    projectIds: ['arsenal', 'webapp-placeholder'],
+    projectIds: ['arsenal', 'vape-inventory', 'cafe-menu-order', 'ancient-architecture-cards'],
   },
   {
     id: 'flask',
@@ -202,7 +201,6 @@ export const skills: Skill[] = [
     level: 'Strong',
     percent: 88,
     usedIn: 'Styling system for this portfolio.',
-    projectIds: ['webapp-placeholder'],
+    projectIds: ['vape-inventory', 'cafe-menu-order', 'ancient-architecture-cards'],
   },
 ]
-

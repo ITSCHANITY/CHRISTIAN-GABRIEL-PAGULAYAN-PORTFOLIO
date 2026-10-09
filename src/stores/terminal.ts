@@ -4,7 +4,7 @@ import { ref } from 'vue'
 export interface TerminalLine {
   id: number
   text: string
-  
+
   kind: 'input' | 'output'
 }
 

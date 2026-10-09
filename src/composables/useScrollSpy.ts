@@ -17,7 +17,6 @@ export function useScrollSpy(sectionIds: string[]): ScrollSpyReturn {
   onMounted(() => {
     observer = new IntersectionObserver(
       (entries) => {
-
         let best: IntersectionObserverEntry | null = null
         for (const entry of entries) {
           if (!entry.isIntersecting) continue

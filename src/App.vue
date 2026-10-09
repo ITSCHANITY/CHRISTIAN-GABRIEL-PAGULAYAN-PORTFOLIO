@@ -34,16 +34,12 @@ onMounted(() => {
 </script>
 
 <template>
-  
   <AnimatedBackground />
 
-  
   <MatrixRain />
 
-  
   <GameLoader @done="booted = true" />
 
-  
   <ScanlineOverlay />
   <ScrollProgress />
   <BreachOverlay />
@@ -51,7 +47,6 @@ onMounted(() => {
   <CommandPalette />
   <ShortcutsOverlay />
 
-  
   <Navbar />
   <SectionDots />
 
@@ -59,6 +54,5 @@ onMounted(() => {
 
   <Footer />
 
-  
   <Terminal />
 </template>

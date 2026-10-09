@@ -15,7 +15,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          gsap: ['gsap', 'gsap/ScrollTrigger'],
           icons: ['lucide-vue-next'],
           vendor: ['vue', 'vue-router', 'pinia', '@vueuse/core'],
         },

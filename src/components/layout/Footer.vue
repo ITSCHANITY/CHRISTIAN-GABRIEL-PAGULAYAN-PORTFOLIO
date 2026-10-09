@@ -48,16 +48,10 @@ onBeforeUnmount(() => window.clearInterval(timer))
       </p>
 
       <p class="font-mono text-xs text-muted">
-        <GlitchText
-          :texts="copyrightPair"
-          :interval="6000"
-          :duration="800"
-          :rgb="false"
-        />
+        <GlitchText :texts="copyrightPair" :interval="6000" :duration="800" :rgb="false" />
       </p>
 
       <div class="flex items-center gap-4">
-        
         <button
           type="button"
           class="inline-flex items-center gap-1.5 font-mono text-[11px] text-muted hover:text-brand"
@@ -66,19 +60,11 @@ onBeforeUnmount(() => window.clearInterval(timer))
         >
           <Download :size="13" /> CV
         </button>
-        
-        <span
-          class="font-mono text-[10px] text-muted/60"
-          title="try the Konami code, or press ?"
-        >
 
+        <span class="font-mono text-[10px] text-muted/60" title="try the Konami code, or press ?">
+          // press ? for shortcuts
         </span>
-        <button
-          type="button"
-          class="btn !px-3 !py-2"
-          aria-label="back to top"
-          @click="toTop"
-        >
+        <button type="button" class="btn !px-3 !py-2" aria-label="back to top" @click="toTop">
           <ArrowUp :size="16" />
         </button>
       </div>

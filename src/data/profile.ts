@@ -1,7 +1,6 @@
 import type { Profile } from '@/types'
 
 export const profile: Profile = {
-
   fullName: 'CHRISTIAN GABRIEL PAGULAYAN',
 
   handle: 'ITSCHANITY',
@@ -27,16 +26,16 @@ export const profile: Profile = {
 
   org: {
     base: 'ICpEP.SE – CSU Chapter',
-    alias: 'ICpEP.SE // DOCS & LEADERSHIP',
+    alias: 'Institute of Computer Engineers of the Philippines',
   },
 
   bioLines: [
     'Hi, I am Christian Gabriel Pagulayan — you can call me Ian.',
     'Computer Engineering student @ Cagayan State University, Carig Campus.',
-    'I live in a Kali Linux terminal: scripting, breaking, and defending systems.',
+    'I live in Cagayan, Philippines.',
     'Focus: cybersecurity, penetration testing, SOC / detection engineering,',
     'and embedded systems / IoT.',
-    'Active member of ICpEP.SE – CSU Chapter (documentation & leadership support).',
+    'Active member of ICpEP.SE – CSU Chapter and College of Engineering and Architecture Student Council.',
     'Seeking internship and entry-level roles in security.',
   ],
 
@@ -64,7 +63,6 @@ export const profile: Profile = {
   ],
 
   loader: {
-
     title: 'ITSCHANITY',
 
     subtitle: 'OPERATOR EDITION',
@@ -83,4 +81,3 @@ export const profile: Profile = {
     startPrompt: 'PRESS ANY KEY TO START',
   },
 }
-

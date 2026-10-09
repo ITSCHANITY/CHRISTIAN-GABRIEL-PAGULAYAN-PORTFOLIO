@@ -9,7 +9,6 @@ export const navSections: NavSection[] = [
   { id: 'about', label: 'About', prompt: '> cat about.txt' },
   { id: 'skills', label: 'Skills', prompt: '> ./skills --matrix' },
   { id: 'projects', label: 'Projects', prompt: '> ./projects --list' },
-  { id: 'experience', label: 'Involvement', prompt: '> ./timeline --draw' },
   { id: 'resume', label: 'Resume', prompt: '> ./cv --open' },
   { id: 'contact', label: 'Contact', prompt: '> ./contact --send' },
 ]
@@ -68,10 +67,7 @@ export const commands: TerminalCommand[] = [
   {
     name: 'contact',
     description: 'show contact info',
-    run: () => [
-      `email: ${profile.email}`,
-      ...socials.map((s) => `${s.id.padEnd(10)} ${s.href}`),
-    ],
+    run: () => [`email: ${profile.email}`, ...socials.map((s) => `${s.id.padEnd(10)} ${s.href}`)],
   },
   {
     name: 'cv',
@@ -142,4 +138,3 @@ export const commands: TerminalCommand[] = [
     run: () => ['↑ ↑ ↓ ↓ ← → ← → B A'],
   },
 ]
-

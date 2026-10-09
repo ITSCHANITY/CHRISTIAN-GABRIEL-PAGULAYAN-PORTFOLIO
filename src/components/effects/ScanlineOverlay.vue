@@ -10,9 +10,5 @@ const classes = computed(() => ({
 </script>
 
 <template>
-  <div
-    class="pointer-events-none fixed inset-0 z-[55]"
-    :class="classes"
-    aria-hidden="true"
-  />
+  <div class="pointer-events-none fixed inset-0 z-[55]" :class="classes" aria-hidden="true" />
 </template>

@@ -4,7 +4,6 @@
 
 @layer base {
   :root {
-    
     --c-brand: 225 29 72;
     --c-accent: 34 211 238;
     --c-brand-2: 255 23 68;
@@ -62,7 +61,6 @@
 }
 
 @layer utilities {
-  
   .glitch-rgb {
     position: relative;
     text-shadow:
@@ -105,15 +103,13 @@
 }
 
 .fx-grid {
-  background-image:
-    linear-gradient(rgb(var(--c-brand) / 0.05) 1px, transparent 1px),
+  background-image: linear-gradient(rgb(var(--c-brand) / 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgb(var(--c-brand) / 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
 .bg-grid-drift {
-  background-image:
-    linear-gradient(rgb(var(--c-brand) / 0.06) 1px, transparent 1px),
+  background-image: linear-gradient(rgb(var(--c-brand) / 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgb(var(--c-brand) / 0.06) 1px, transparent 1px);
   background-size: 46px 46px;
   animation: grid-drift 22s linear infinite;
@@ -223,8 +219,7 @@
 }
 
 .bg-vignette {
-  background:
-    radial-gradient(120% 80% at 50% -10%, rgb(var(--c-brand) / 0.12), transparent 55%),
+  background: radial-gradient(120% 80% at 50% -10%, rgb(var(--c-brand) / 0.12), transparent 55%),
     radial-gradient(100% 100% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.6) 100%);
 }
 
@@ -233,8 +228,7 @@
 }
 
 .breach-overlay {
-  background:
-    repeating-linear-gradient(
+  background: repeating-linear-gradient(
       0deg,
       rgba(255, 0, 0, 0.08),
       rgba(255, 0, 0, 0.08) 2px,

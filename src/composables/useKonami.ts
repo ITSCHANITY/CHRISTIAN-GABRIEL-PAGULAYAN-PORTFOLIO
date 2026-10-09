@@ -26,7 +26,6 @@ export function useKonami(onUnlock: () => void): void {
         onUnlock()
       }
     } else {
-
       progress = key === KONAMI_SEQUENCE[0] ? 1 : 0
     }
   }

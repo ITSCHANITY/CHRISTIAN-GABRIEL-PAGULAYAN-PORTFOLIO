@@ -13,10 +13,7 @@ const progress = computed(() => {
 </script>
 
 <template>
-  <div
-    class="fixed inset-x-0 top-0 z-[130] h-0.5 bg-transparent"
-    aria-hidden="true"
-  >
+  <div class="fixed inset-x-0 top-0 z-[130] h-0.5 bg-transparent" aria-hidden="true">
     <div
       class="scroll-bar h-full transition-[width] duration-75"
       :style="{ width: `${progress}%` }"

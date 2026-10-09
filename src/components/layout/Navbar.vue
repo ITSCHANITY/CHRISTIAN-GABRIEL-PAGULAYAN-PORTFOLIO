@@ -42,25 +42,16 @@ function downloadCv(): void {
     :class="y > 40 ? 'border-white/10 bg-ink-900/85 backdrop-blur' : 'border-transparent'"
   >
     <nav class="flex w-full items-center justify-between gap-3 px-4 py-3 sm:px-10 sm:py-4">
-      
       <button
         type="button"
-        class="shrink-0 font-mono text-xl font-bold text-white sm:text-2xl"
+        class="flex w-[7.5rem] shrink-0 justify-start overflow-hidden font-mono text-xl font-bold text-white sm:w-[9.5rem] sm:text-2xl"
         @click="go('hero')"
       >
-        <GlitchText
-          :texts="['CGP', 'ITSCHANITY']"
-          :interval="5200"
-          :duration="700"
-        />
+        <GlitchText :texts="['CGP', 'ITSCHANITY']" :interval="5200" :duration="700" />
       </button>
 
-      
       <ul class="hidden items-center gap-6 md:flex lg:gap-8">
-        <li
-          v-for="s in navSections"
-          :key="s.id"
-        >
+        <li v-for="s in navSections" :key="s.id">
           <button
             type="button"
             class="glitch-rgb font-mono text-sm uppercase tracking-wide transition-colors"
@@ -72,7 +63,6 @@ function downloadCv(): void {
         </li>
       </ul>
 
-      
       <div class="flex shrink-0 items-center gap-0.5 sm:gap-1.5">
         <button
           type="button"
@@ -90,14 +80,8 @@ function downloadCv(): void {
           title="FX (scanlines/grain/particles)"
           @click="ui.toggleFx()"
         >
-          <Zap
-            v-if="ui.fxEnabled"
-            class="h-5 w-5 sm:h-[22px] sm:w-[22px]"
-          />
-          <ZapOff
-            v-else
-            class="h-5 w-5 sm:h-[22px] sm:w-[22px]"
-          />
+          <Zap v-if="ui.fxEnabled" class="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
+          <ZapOff v-else class="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
         </button>
         <button
           type="button"
@@ -109,7 +93,6 @@ function downloadCv(): void {
           <Palette class="h-5 w-5 sm:h-[22px] sm:w-[22px]" />
         </button>
 
-        
         <button
           type="button"
           class="ml-1 hidden items-center gap-2 rounded-sm border border-brand/50 bg-brand/10 px-4 py-2 font-mono text-sm text-white hover:bg-brand/20 sm:inline-flex"
@@ -131,7 +114,6 @@ function downloadCv(): void {
           <Pencil :size="22" />
         </button>
 
-        
         <button
           type="button"
           class="rounded-sm p-2 text-gray-300 hover:text-brand md:hidden"
@@ -139,28 +121,15 @@ function downloadCv(): void {
           :aria-expanded="menuOpen"
           @click="menuOpen = !menuOpen"
         >
-          <X
-            v-if="menuOpen"
-            class="h-6 w-6"
-          />
-          <Menu
-            v-else
-            class="h-6 w-6"
-          />
+          <X v-if="menuOpen" class="h-6 w-6" />
+          <Menu v-else class="h-6 w-6" />
         </button>
       </div>
     </nav>
 
-    
     <Transition name="slide">
-      <ul
-        v-if="menuOpen"
-        class="border-t border-white/10 bg-ink-900/95 px-4 py-3 md:hidden"
-      >
-        <li
-          v-for="s in navSections"
-          :key="s.id"
-        >
+      <ul v-if="menuOpen" class="border-t border-white/10 bg-ink-900/95 px-4 py-3 md:hidden">
+        <li v-for="s in navSections" :key="s.id">
           <button
             type="button"
             class="block w-full py-3 text-left font-mono text-base"
@@ -170,7 +139,7 @@ function downloadCv(): void {
             {{ s.prompt }}
           </button>
         </li>
-        
+
         <li class="mt-2 border-t border-white/10 pt-3">
           <button
             type="button"

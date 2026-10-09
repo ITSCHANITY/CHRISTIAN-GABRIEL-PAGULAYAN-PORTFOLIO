@@ -5,13 +5,10 @@ import type { ThemeId, Toast, ToastKind } from '@/types'
 import { getTheme, defaultThemeId, themes } from '@/data/theme'
 
 export const useUiStore = defineStore('ui', () => {
-
   const themeId = useStorage<ThemeId>('itschanity:theme', defaultThemeId)
   const breachUnlocked = useStorage<boolean>('itschanity:breach', false)
 
-  const availableThemes = computed(() =>
-    themes.filter((t) => !t.hidden || breachUnlocked.value),
-  )
+  const availableThemes = computed(() => themes.filter((t) => !t.hidden || breachUnlocked.value))
 
   function applyTheme(id: ThemeId): void {
     const theme = getTheme(id)
@@ -23,7 +20,6 @@ export const useUiStore = defineStore('ui', () => {
     applyThemedCursor(theme.brand)
   }
 
-  
   function applyThemedCursor(brandRgb: string): void {
     const [r, g, b] = brandRgb.split(/\s+/).map(Number)
     if ([r, g, b].some((n) => Number.isNaN(n))) return
@@ -56,7 +52,7 @@ export const useUiStore = defineStore('ui', () => {
   function toggleFx(): void {
     fxEnabled.value = !fxEnabled.value
   }
-  
+
   const effectsActive = computed(() => fxEnabled.value && !reducedMotion.value)
 
   const breachActive = ref(false)

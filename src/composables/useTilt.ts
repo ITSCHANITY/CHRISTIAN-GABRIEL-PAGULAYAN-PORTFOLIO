@@ -1,11 +1,10 @@
 import { ref, type Ref, type CSSProperties } from 'vue'
 
 export interface TiltOptions {
-  
   max?: number
-  
+
   scale?: number
-  
+
   glare?: boolean
 }
 

@@ -1,13 +1,12 @@
 import { ref, onBeforeUnmount, type Ref } from 'vue'
 
 export interface TypewriterOptions {
-  
   typeSpeed?: number
-  
+
   deleteSpeed?: number
-  
+
   holdTime?: number
-  
+
   loop?: boolean
 }
 

@@ -5,21 +5,20 @@ import { useUiStore } from '@/stores/ui'
 
 const props = withDefaults(
   defineProps<{
-    
     texts: string[]
-    
+
     interval?: number
-    
+
     scrambleChars?: string
-    
+
     duration?: number
-    
+
     hoverFlip?: boolean
-    
+
     lockable?: boolean
-    
+
     rgb?: boolean
-    
+
     tag?: string
   }>(),
   {

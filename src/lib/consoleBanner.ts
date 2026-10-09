@@ -19,7 +19,6 @@ export function printConsoleBanner(): void {
   )
 
   socials.forEach((s) => {
-
     console.log(`%c${s.id.padEnd(9)}%c${s.href}`, dim, link)
   })
 }

@@ -104,11 +104,7 @@ defineExpose({ openPalette })
       class="fixed inset-0 z-[160] flex items-start justify-center bg-black/60 px-4 pt-[12vh] backdrop-blur-sm"
       @click.self="closePalette"
     >
-      <div
-        class="card w-full max-w-lg overflow-hidden"
-        role="dialog"
-        aria-label="command palette"
-      >
+      <div class="card w-full max-w-lg overflow-hidden" role="dialog" aria-label="command palette">
         <div class="flex items-center gap-2 border-b border-white/10 px-4 py-3">
           <span class="font-mono text-sm text-brand">&gt;</span>
           <input
@@ -118,7 +114,7 @@ defineExpose({ openPalette })
             placeholder="jump to section or project..."
             class="w-full bg-transparent font-mono text-sm text-white placeholder:text-muted focus:outline-none"
             aria-label="search"
-          >
+          />
           <kbd class="chip text-[10px]">ESC</kbd>
         </div>
         <ul class="max-h-72 overflow-y-auto py-2">
@@ -133,10 +129,7 @@ defineExpose({ openPalette })
             <span>{{ item.label }}</span>
             <span class="text-[10px] uppercase text-muted">{{ item.hint }}</span>
           </li>
-          <li
-            v-if="filtered.length === 0"
-            class="px-4 py-3 font-mono text-sm text-muted"
-          >
+          <li v-if="filtered.length === 0" class="px-4 py-3 font-mono text-sm text-muted">
             no matches
           </li>
         </ul>

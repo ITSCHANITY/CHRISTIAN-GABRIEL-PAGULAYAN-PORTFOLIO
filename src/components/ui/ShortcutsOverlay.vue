@@ -30,31 +30,15 @@ onKeyStroke('Escape', () => {
       class="fixed inset-0 z-[160] flex items-center justify-center bg-black/60 px-4 backdrop-blur-sm"
       @click.self="open = false"
     >
-      <div
-        class="card w-full max-w-md p-6"
-        role="dialog"
-        aria-label="keyboard shortcuts"
-      >
-        <h3 class="mb-4 font-mono text-sm text-brand">
-
-        </h3>
+      <div class="card w-full max-w-md p-6" role="dialog" aria-label="keyboard shortcuts">
+        <h3 class="mb-4 font-mono text-sm text-brand" />
         <ul class="space-y-3">
-          <li
-            v-for="s in shortcuts"
-            :key="s.keys"
-            class="flex items-center justify-between gap-4"
-          >
+          <li v-for="s in shortcuts" :key="s.keys" class="flex items-center justify-between gap-4">
             <kbd class="chip text-[11px]">{{ s.keys }}</kbd>
             <span class="text-right text-sm text-gray-300">{{ s.desc }}</span>
           </li>
         </ul>
-        <button
-          type="button"
-          class="btn mt-6 w-full"
-          @click="open = false"
-        >
-          close
-        </button>
+        <button type="button" class="btn mt-6 w-full" @click="open = false">close</button>
       </div>
     </div>
   </Transition>

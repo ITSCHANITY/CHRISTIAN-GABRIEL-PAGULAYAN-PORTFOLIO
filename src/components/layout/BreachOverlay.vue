@@ -14,16 +14,16 @@ const ui = useUiStore()
       aria-label="system breach"
     >
       <div class="text-center">
-        <p class="glitch-rgb glitch-active font-mono text-4xl font-extrabold text-red-500 sm:text-6xl">
+        <p
+          class="glitch-rgb glitch-active font-mono text-4xl font-extrabold text-red-500 sm:text-6xl"
+        >
           <GlitchText
             :texts="['SYSTEM BREACH', 'ACCESS GRANTED', 'ITSCHANITY']"
             :interval="500"
             :duration="300"
           />
         </p>
-        <p class="mt-4 font-mono text-sm text-yellow-400">
-          hidden theme unlocked
-        </p>
+        <p class="mt-4 font-mono text-sm text-yellow-400">hidden theme unlocked</p>
       </div>
     </div>
   </Transition>

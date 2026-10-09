@@ -13,15 +13,14 @@ export const socials: Social[] = [
     id: 'linkedin',
     label: 'linkedin.com/in/christian-gabriel',
 
-    href: 'https://www.linkedin.com/in/christian-gabriel',
+    href: 'https://www.linkedin.com/in/christian-gabriel-ba1048370',
     icon: 'Linkedin',
   },
   {
     id: 'email',
     label: 'cgabriel0919@gmail.com',
 
-    href: 'mailto:cgabriel0919@gmail.com',
+    href: 'https://mail.google.com/mail/?view=cm&fs=1&to=cgabriel0919@gmail.com',
     icon: 'Mail',
   },
 ]
-

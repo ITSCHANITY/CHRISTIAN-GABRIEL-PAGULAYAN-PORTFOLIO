@@ -12,6 +12,8 @@ const ui = useUiStore()
 const root = ref<HTMLElement | null>(null)
 
 const typedLines = ref<string[]>([])
+const currentLine = ref('')
+const typingDone = ref(false)
 const started = ref(false)
 
 const stats = computed(() =>
@@ -22,16 +24,39 @@ const counts = ref<number[]>(profile.stats.map(() => 0))
 function typeBio(): void {
   if (ui.reducedMotion) {
     typedLines.value = [...profile.bioLines]
+    typingDone.value = true
     return
   }
-  let i = 0
-  const next = (): void => {
-    if (i >= profile.bioLines.length) return
-    typedLines.value.push(profile.bioLines[i])
-    i++
-    window.setTimeout(next, 420)
+
+  const CHAR_SPEED = 28 // ms per character
+  const LINE_PAUSE = 260 // ms pause between lines
+
+  let lineIdx = 0
+  let charIdx = 0
+
+  const typeChar = (): void => {
+    if (lineIdx >= profile.bioLines.length) {
+      typingDone.value = true
+      return
+    }
+
+    const line = profile.bioLines[lineIdx]
+    charIdx++
+    currentLine.value = line.slice(0, charIdx)
+
+    if (charIdx >= line.length) {
+      // line finished — commit it and move to the next after a short pause
+      typedLines.value.push(line)
+      currentLine.value = ''
+      lineIdx++
+      charIdx = 0
+      window.setTimeout(typeChar, LINE_PAUSE)
+    } else {
+      window.setTimeout(typeChar, CHAR_SPEED)
+    }
   }
-  next()
+
+  typeChar()
 }
 
 function runCounts(): void {
@@ -65,18 +90,10 @@ useIntersectionObserver(
 </script>
 
 <template>
-  <section
-    id="about"
-    ref="root"
-    class="section-shell"
-  >
-    <SectionHeading
-      prompt="> cat about.txt"
-      title="About"
-    />
+  <section id="about" ref="root" class="section-shell">
+    <SectionHeading prompt="> cat about.txt" title="About" />
 
     <div class="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
-      
       <div class="card overflow-hidden">
         <div class="flex items-center gap-2 border-b border-white/10 px-4 py-2">
           <span class="h-3 w-3 rounded-full bg-red-500/80" />
@@ -84,28 +101,24 @@ useIntersectionObserver(
           <span class="h-3 w-3 rounded-full bg-green-500/80" />
           <span class="ml-2 font-mono text-xs text-muted">about.txt — $ whoami</span>
         </div>
-        <div
-          v-editable="'src/data/profile.ts → bioLines'"
-          class="min-h-[14rem] space-y-1 p-5"
-        >
-          <p
-            v-for="(line, i) in typedLines"
-            :key="i"
-            class="term-text text-gray-300"
-          >
+        <div v-editable="'src/data/profile.ts → bioLines'" class="min-h-[14rem] space-y-1 p-5">
+          <p v-for="(line, i) in typedLines" :key="i" class="term-text text-gray-300">
             <span class="mr-2 text-brand">$</span>{{ line }}
           </p>
+          <p v-if="!typingDone" class="term-text text-gray-300">
+            <span class="mr-2 text-brand">$</span>{{ currentLine }}<span
+              class="ml-0.5 inline-block h-4 w-2 animate-pulse bg-brand align-middle"
+              aria-hidden="true"
+            />
+          </p>
           <span
+            v-else
             class="inline-block h-4 w-2 animate-pulse bg-brand align-middle"
             aria-hidden="true"
           />
         </div>
 
-        
-        <div
-          v-editable="'src/data/profile.ts → details'"
-          class="border-t border-white/10 p-5"
-        >
+        <div v-editable="'src/data/profile.ts → details'" class="border-t border-white/10 p-5">
           <dl class="space-y-2">
             <div
               v-for="d in profile.details"
@@ -123,22 +136,14 @@ useIntersectionObserver(
         </div>
       </div>
 
-      
       <div class="space-y-6">
         <TiltCard :max="10">
-          <div
-            v-editable="'src/data/profile.ts → handle / nickname'"
-            class="card p-5"
-          >
-            <p class="font-mono text-xs text-muted">
-
-            </p>
+          <div v-editable="'src/data/profile.ts → handle / nickname'" class="card p-5">
+            <p class="font-mono text-xs text-muted">// whoami</p>
             <p class="mt-2 text-2xl font-bold text-white">
               {{ profile.handle }}
             </p>
-            <p class="font-mono text-sm text-brand">
-              aka "{{ profile.nickname }}"
-            </p>
+            <p class="font-mono text-sm text-brand">aka "{{ profile.nickname }}"</p>
             <div class="mt-4 space-y-1 font-mono text-xs text-gray-400">
               <p><span class="text-accent">role:</span> {{ profile.careerGoal }}</p>
               <p><span class="text-accent">os:</span> Kali Linux</p>
@@ -147,16 +152,8 @@ useIntersectionObserver(
           </div>
         </TiltCard>
 
-        
-        <div
-          v-editable="'src/data/profile.ts → stats'"
-          class="grid grid-cols-3 gap-3"
-        >
-          <div
-            v-for="(stat, i) in stats"
-            :key="stat.label"
-            class="card p-3 text-center"
-          >
+        <div v-editable="'src/data/profile.ts → stats'" class="grid grid-cols-3 gap-3">
+          <div v-for="(stat, i) in stats" :key="stat.label" class="card p-3 text-center">
             <p class="font-mono text-2xl font-bold text-brand">
               {{ counts[i] }}<span v-if="stat.suffix">{{ stat.suffix }}</span>
             </p>
@@ -166,20 +163,12 @@ useIntersectionObserver(
           </div>
         </div>
 
-        
-        <div
-          v-editable="'src/data/profile.ts → currentlyLearning'"
-          class="card p-5"
-        >
+        <div v-editable="'src/data/profile.ts → currentlyLearning'" class="card p-5">
           <p class="mb-3 flex items-center gap-2 font-mono text-xs text-muted">
-            <span class="h-2 w-2 animate-pulse rounded-full bg-brand" />
+            <span class="h-2 w-2 animate-pulse rounded-full bg-brand" /> // currently learning
           </p>
           <div class="flex flex-wrap gap-2">
-            <span
-              v-for="t in profile.currentlyLearning"
-              :key="t"
-              class="chip !text-[11px]"
-            >{{
+            <span v-for="t in profile.currentlyLearning" :key="t" class="chip !text-[11px]">{{
               t
             }}</span>
           </div>

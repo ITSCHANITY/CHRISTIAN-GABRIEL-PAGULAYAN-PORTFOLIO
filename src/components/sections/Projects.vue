@@ -11,6 +11,7 @@ import type { Project, ProjectCategory } from '@/types'
 const activeFilter = ref<ProjectCategory | 'all'>('all')
 const query = ref('')
 const selected = ref<Project | null>(null)
+const hoveredId = ref<string | null>(null)
 
 const filtered = computed(() => {
   const q = query.value.trim().toLowerCase()
@@ -34,32 +35,22 @@ function close(): void {
 </script>
 
 <template>
-  <section
-    id="projects"
-    class="section-shell"
-  >
-    <SectionHeading
-      prompt="> ./projects --list"
-      title="Projects"
-    />
+  <section id="projects" class="section-shell">
+    <SectionHeading prompt="> ./projects --list" title="Projects" />
 
-    
     <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <p class="font-mono text-xs text-muted">
-
+        // {{ filtered.length }} of {{ projectCount }} shown
       </p>
       <label class="flex items-center gap-2 rounded-sm border border-white/10 bg-ink-800 px-3 py-2">
-        <Search
-          :size="15"
-          class="text-muted"
-        />
+        <Search :size="15" class="text-muted" />
         <input
           v-model="query"
           type="search"
           placeholder="search projects / tech..."
           class="w-full bg-transparent font-mono text-xs text-white placeholder:text-muted focus:outline-none sm:w-64"
           aria-label="search projects"
-        >
+        />
       </label>
     </div>
 
@@ -80,7 +71,6 @@ function close(): void {
       </button>
     </div>
 
-    
     <TransitionGroup
       v-editable="'src/data/projects.ts → projects'"
       tag="div"
@@ -91,21 +81,17 @@ function close(): void {
         v-for="project in filtered"
         :key="project.id"
         :project="project"
+        :dimmed="hoveredId !== null && hoveredId !== project.id"
         @open="open"
+        @hover="hoveredId = $event"
       />
     </TransitionGroup>
 
-    <p
-      v-if="filtered.length === 0"
-      class="py-10 text-center font-mono text-sm text-muted"
-    >
+    <p v-if="filtered.length === 0" class="py-10 text-center font-mono text-sm text-muted">
       no projects match "{{ query }}"
     </p>
 
-    <ProjectModal
-      :project="selected"
-      @close="close"
-    />
+    <ProjectModal :project="selected" @close="close" />
   </section>
 </template>
 

@@ -51,21 +51,13 @@ const activeSkillName = computed(() => skills.find((s) => s.id === ui.activeSkil
 </script>
 
 <template>
-  <section
-    id="skills"
-    ref="root"
-    class="section-shell"
-  >
-    <SectionHeading
-      prompt="> ./skills --matrix"
-      title="Skill Matrix"
-    />
+  <section id="skills" ref="root" class="section-shell">
+    <SectionHeading prompt="> ./skills --matrix" title="Skill Matrix" />
 
     <p class="mb-6 font-mono text-xs text-muted">
-
+      // click a skill to highlight the projects that used it
     </p>
 
-    
     <Transition name="fade">
       <div
         v-if="ui.activeSkillId && linkedProjects.length"
@@ -93,7 +85,6 @@ const activeSkillName = computed(() => skills.find((s) => s.id === ui.activeSkil
       </div>
     </Transition>
 
-    
     <div
       v-editable="'src/data/skills.ts → skills'"
       class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
@@ -104,10 +95,7 @@ const activeSkillName = computed(() => skills.find((s) => s.id === ui.activeSkil
         class="card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand/60 hover:shadow-lg"
       >
         <h3 class="mb-5 flex items-center gap-2 font-mono text-brand">
-          <span
-            class="h-5 w-0.5 bg-brand"
-            aria-hidden="true"
-          />
+          <span class="h-5 w-0.5 bg-brand" aria-hidden="true" />
           <span class="text-accent">[]</span> {{ cat.label }}
         </h3>
 
@@ -127,7 +115,7 @@ const activeSkillName = computed(() => skills.find((s) => s.id === ui.activeSkil
                 class="glitch-rgb font-mono text-sm"
                 :class="
                   ui.activeSkillId === s.id ||
-                    (ui.activeProjectId && s.projectIds.includes(ui.activeProjectId))
+                  (ui.activeProjectId && s.projectIds.includes(ui.activeProjectId))
                     ? 'text-brand'
                     : 'text-gray-200'
                 "
@@ -137,7 +125,6 @@ const activeSkillName = computed(() => skills.find((s) => s.id === ui.activeSkil
               <span class="font-mono text-[10px] uppercase text-muted">{{ s.level }}</span>
             </div>
 
-            
             <div class="h-2 w-full overflow-hidden rounded-full bg-black/50">
               <div
                 class="h-full rounded-full bg-gradient-to-r from-brand to-accent transition-[width] duration-700 ease-out"
