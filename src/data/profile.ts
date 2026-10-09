@@ -19,7 +19,7 @@ export const profile: Profile = {
 
   university: {
     base: 'Cagayan State University',
-    alias: 'CSU // CARIG CAMPUS',
+    alias: 'CSU CARIG CAMPUS',
   },
 
   course: 'BS Computer Engineering',

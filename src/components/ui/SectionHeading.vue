@@ -42,7 +42,7 @@ function onHover(): void {
 </script>
 
 <template>
-  <div ref="root" class="mb-10">
+  <div ref="root" class="mb-5">
     <h2
       class="glitch-rgb font-mono text-sm text-brand"
       :class="{ 'glitch-active': running }"

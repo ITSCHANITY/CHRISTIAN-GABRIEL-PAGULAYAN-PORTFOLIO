@@ -86,7 +86,7 @@ export function useTerminal(): UseTerminalReturn {
 
   function banner(): void {
     if (term.lines.length > 0) return
-    term.print('ITSCHANITY // interactive shell', 'output')
+    term.print('ITSCHANITY interactive shell', 'output')
     term.print("type 'help' to begin. press ` or Esc to close.", 'output')
     term.print('', 'output')
   }

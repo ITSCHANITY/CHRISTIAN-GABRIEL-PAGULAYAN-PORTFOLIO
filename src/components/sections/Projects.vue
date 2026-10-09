@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { Search } from 'lucide-vue-next'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
 import ProjectCard from '@/components/sections/ProjectCard.vue'
 import ProjectModal from '@/components/sections/ProjectModal.vue'
@@ -9,21 +8,11 @@ import { projects, projectFilters, projectCount } from '@/data/projects'
 import type { Project, ProjectCategory } from '@/types'
 
 const activeFilter = ref<ProjectCategory | 'all'>('all')
-const query = ref('')
 const selected = ref<Project | null>(null)
 const hoveredId = ref<string | null>(null)
 
 const filtered = computed(() => {
-  const q = query.value.trim().toLowerCase()
-  return projects.filter((p) => {
-    const matchesFilter = activeFilter.value === 'all' || p.category === activeFilter.value
-    const matchesQuery =
-      !q ||
-      p.title.toLowerCase().includes(q) ||
-      p.summary.toLowerCase().includes(q) ||
-      p.tech.some((t) => t.toLowerCase().includes(q))
-    return matchesFilter && matchesQuery
-  })
+  return projects.filter((p) => activeFilter.value === 'all' || p.category === activeFilter.value)
 })
 
 function open(project: Project): void {
@@ -38,21 +27,7 @@ function close(): void {
   <section id="projects" class="section-shell">
     <SectionHeading prompt="> ./projects --list" title="Projects" />
 
-    <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-      <p class="font-mono text-xs text-muted">
-        {{ filtered.length }} of {{ projectCount }} shown
-      </p>
-      <label class="flex items-center gap-2 rounded-sm border border-white/10 bg-ink-800 px-3 py-2">
-        <Search :size="15" class="text-muted" />
-        <input
-          v-model="query"
-          type="search"
-          placeholder="search projects / tech..."
-          class="w-full bg-transparent font-mono text-xs text-white placeholder:text-muted focus:outline-none sm:w-64"
-          aria-label="search projects"
-        />
-      </label>
-    </div>
+    <p class="mb-6 font-mono text-xs text-muted">{{ filtered.length }} of {{ projectCount }} shown</p>
 
     <div class="mb-8 flex flex-wrap gap-2">
       <button
@@ -88,7 +63,7 @@ function close(): void {
     </TransitionGroup>
 
     <p v-if="filtered.length === 0" class="py-10 text-center font-mono text-sm text-muted">
-      no projects match "{{ query }}"
+      no projects in this category
     </p>
 
     <ProjectModal :project="selected" @close="close" />
