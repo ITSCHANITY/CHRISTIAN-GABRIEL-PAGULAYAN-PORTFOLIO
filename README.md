@@ -5,22 +5,6 @@ A production-ready, highly interactive personal portfolio for Christian
 Gabriel Pagulayan (ITSCHANITY) — built
 with Vue 3, TypeScript (strict), Tailwind CSS v3, and Vite.
 
-## Features
-- **Glitch system** — a reusable `<GlitchText>` component (scramble/decode,
-  RGB channel split, hover-flip, click-lock) driving the hero name, logo,
-  headings, skills, project codenames, and more.
-- **Signature terminal** — a working fake shell (``` ` ``` to open) with a typed
-  command registry, history (↑/↓), and tab autocomplete.
-- **Sections** — hero, about (typed bio + tilt whoami + count-up stats),
-  skills matrix (category cards with animated progress bars), filterable
-  projects grid + modal, resume/CV download, and a validated contact form.
-- **Interactivity** — themed cursor, tilt cards, command
-  palette (`Ctrl/⌘+K`), shortcuts overlay (`?`), scroll progress, section
-  dots, theme switcher (crimson / matrix / cyan), toasts, and a Konami-code
-  "SYSTEM BREACH" easter egg that unlocks a hidden theme.
-- **Accessible & performant** — respects `prefers-reduced-motion`, FX toggle,
-  matrix-rain background that pauses when hidden, semantic HTML, keyboard nav.
-
 ## Quick start
 ```bash
 npm install
