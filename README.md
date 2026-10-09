@@ -14,11 +14,10 @@ npm run build    # typecheck + production build -> dist/
 
 ## Editing your content
 **All content lives in `src/data/`** — edit `profile.ts`, `skills.ts`,
-`projects.ts`, `socials.ts`, `theme.ts`, and `commands.ts`. Components contain
-no hardcoded personal text.
+`projects.ts`, `socials.ts`, `theme.ts`, and `commands.ts`.
 
 ## Stack
-Vue 3 (Composition API) · TypeScript (strict, no `any`) · Tailwind CSS v3 ·
+Vue 3 (Composition API) · TypeScript · Tailwind CSS v3 ·
 Vite · Vue Router · Pinia · VueUse · lucide-vue-next.
 
 ## Deploy
