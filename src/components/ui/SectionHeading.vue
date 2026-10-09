@@ -42,7 +42,7 @@ function onHover(): void {
 </script>
 
 <template>
-  <div ref="root" class="mb-12">
+  <div ref="root" class="mb-10">
     <h2
       class="glitch-rgb font-mono text-sm text-brand"
       :class="{ 'glitch-active': running }"
@@ -50,9 +50,9 @@ function onHover(): void {
     >
       {{ output }}
     </h2>
-    <p class="mt-2 font-sans text-3xl font-bold text-white sm:text-4xl">
+    <p class="mt-1.5 font-sans text-3xl font-bold text-white sm:text-4xl">
       {{ title }}
     </p>
-    <div class="mt-4 h-px w-24 bg-gradient-to-r from-brand to-transparent" />
+    <div class="mt-3 h-px w-24 bg-gradient-to-r from-brand to-transparent" />
   </div>
 </template>
