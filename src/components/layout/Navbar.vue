@@ -44,7 +44,7 @@ function downloadCv(): void {
     <nav class="flex w-full items-center justify-between gap-3 px-4 py-3 sm:px-10 sm:py-4">
       <button
         type="button"
-        class="flex w-[7.5rem] shrink-0 justify-start overflow-hidden font-mono text-xl font-bold text-white sm:w-[9.5rem] sm:text-2xl"
+        class="flex w-[8.5rem] shrink-0 justify-start overflow-hidden whitespace-nowrap font-mono text-lg font-bold text-white sm:w-[10rem] sm:text-2xl"
         @click="go('hero')"
       >
         <GlitchText :texts="['CGP', 'ITSCHANITY']" :interval="5200" :duration="700" />

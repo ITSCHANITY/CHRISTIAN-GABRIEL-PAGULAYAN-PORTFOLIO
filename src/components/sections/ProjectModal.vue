@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch, computed } from 'vue'
 import { onKeyStroke } from '@vueuse/core'
-import { X, ExternalLink } from 'lucide-vue-next'
+import { X } from 'lucide-vue-next'
 import type { Project } from '@/types'
 import { skills } from '@/data/skills'
 
@@ -122,20 +122,6 @@ const usedSkills = computed(() => {
                 s.name
               }}</span>
             </div>
-          </div>
-
-          <div v-if="project.links.length" class="flex flex-wrap gap-3 pt-2">
-            <a
-              v-for="link in project.links"
-              :key="link.label"
-              :href="link.href"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-primary"
-            >
-              {{ link.label }}
-              <ExternalLink :size="14" />
-            </a>
           </div>
         </div>
       </div>

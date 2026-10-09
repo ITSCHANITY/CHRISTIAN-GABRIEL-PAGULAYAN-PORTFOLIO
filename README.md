@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ITSCHANITY — Portfolio
 
 A production-ready, highly interactive personal portfolio for Christian
@@ -39,3 +40,6 @@ Vite · Vue Router · Pinia · VueUse · lucide-vue-next.
 ## Deploy
 - **Vercel:** import the repo, framework preset **Vite**, build `npm run build`, output `dist`.
 - **Netlify:** build `npm run build`, publish `dist` (SPA routing handled by `public/_redirects`).
+=======
+# CHRISTIAN-GABRIEL-PAGULAYAN-PORTFOLIO
+>>>>>>> 2d3c3eaf829230de81c5c9db9057e16530f31e24

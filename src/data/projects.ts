@@ -316,7 +316,10 @@ export const projects: Project[] = [
     approach:
       'Plan a local web app (Vue + DRF) with a terminal-style UI to index, search, and launch projects.',
     features: ['Project catalog + search', 'Terminal-style UI', 'Quick-launch actions'],
-    lessons: ['(planned)'],
+    lessons: [
+      'Centralizing scattered tools into one launchpad saves real time day to day.',
+      'A terminal-style UI can stay fast and keyboard-driven while looking good.',
+    ],
     tech: ['Vue 3', 'Django REST', 'TypeScript'],
     skillIds: ['vue', 'typescript', 'drf'],
     terminalPreview: [
@@ -339,7 +342,10 @@ export const projects: Project[] = [
     problem: 'Manual stock tracking leads to missed restocks and lost sales.',
     approach: 'Build a CRUD inventory system with search, categories, and low-stock notifications.',
     features: ['Stock level tracking', 'Low-stock alerts', 'Product search & categories'],
-    lessons: ['what you learned'],
+    lessons: [
+      'Designing CRUD flows and state around a real business need keeps the UI focused.',
+      'Small quality-of-life touches like low-stock alerts matter more than feature count.',
+    ],
     tech: ['Vue 3', 'TypeScript', 'Tailwind'],
     skillIds: ['vue', 'typescript', 'tailwind'],
     terminalPreview: ['$ vapestock --check', '[*] loading inventory...', '[!] 3 items low on stock'],
@@ -357,7 +363,10 @@ export const projects: Project[] = [
     problem: 'Scattered historical info is hard to browse in one clean, visual place.',
     approach: 'Build a card-based gallery with filtering and detailed info views.',
     features: ['Info card gallery', 'Filter by era / region', 'Detailed structure views'],
-    lessons: ['what you learned'],
+    lessons: [
+      'Structuring content as reusable data makes a card gallery easy to scale.',
+      'Good filtering and layout do most of the work in a content-driven UI.',
+    ],
     tech: ['Vue 3', 'TypeScript', 'Tailwind'],
     skillIds: ['vue', 'typescript', 'tailwind'],
     terminalPreview: ['$ ancient-arch --list', '[*] loading structures...', '[+] 24 cards ready'],
@@ -375,7 +384,10 @@ export const projects: Project[] = [
     problem: 'Paper menus and manual order tracking slow down service and cause mistakes.',
     approach: 'Build a digital menu with an order cart and order-status tracking.',
     features: ['Digital menu display', 'Order cart & builder', 'Order status tracking'],
-    lessons: ['what you learned'],
+    lessons: [
+      'Modeling cart and order state cleanly is the hardest part of an ordering app.',
+      'Clear order-status feedback keeps both staff and customers in sync.',
+    ],
     tech: ['Vue 3', 'TypeScript', 'Tailwind'],
     skillIds: ['vue', 'typescript', 'tailwind'],
     terminalPreview: ['$ cafeorder --new', '[*] loading menu...', '[+] order #42 placed'],
@@ -393,7 +405,10 @@ export const projects: Project[] = [
     problem: 'Describe the design goal / problem the robot solves.',
     approach: 'Describe the microcontroller, sensors, and control logic (e.g. PID).',
     features: ['IR line detection', 'Motor driver control', 'PID path correction'],
-    lessons: ['what you learned'],
+    lessons: [
+      'Sensor calibration makes or breaks reliable line tracking.',
+      'Tuning PID values teaches the real feedback-loop tradeoff between speed and stability.',
+    ],
     tech: ['Arduino', 'IR Sensors', 'Motor Driver', 'C/C++'],
     skillIds: ['sensors'],
     terminalPreview: ['$ linefollower --run', '[*] calibrating IR sensors...', '[*] following line'],
